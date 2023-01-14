@@ -15,27 +15,9 @@ import java.io.File;
 public class TestLogin extends CommonAPI { // je rajoute extends CommonAPI
     Logger LOG = LogManager.getLogger(TestLogin.class.getName());
 
-//    LoginPage loginPage = new LoginPage(driver); // on crée des objets génériques
-//    HomePage homePage = new HomePage(driver); // pour avoir accès à driver qu'on a crée dans CommonAPI
-
-
-    // je fais appel à config.properties
-
-//    String username = prop.getProperty("username");
-//    String password = prop.getProperty("password");
-
-
-    // tant que j'ai rajouté decod dans Utility, je dois décoder mes coordonées
-
     String username = Utility.decode(prop.getProperty("username"));
     String password = Utility.decode(prop.getProperty("password"));
     ExcelReader excelReader = new ExcelReader(Utility.currentDir+ File.separator+"data"+File.separator+"test-data.xlsx", "data");
-
-    // on se connecte à DB "classeDB"
-    //ConnectDB connectDB = new ConnectDB();
-
-    //tring dbUsername = connectDB.getTableColumnData("select * from cred", "username").get(0);
-    //String dbPassword= connectDB.getTableColumnData("select * from cred", "password").get(0);
 
     public TestLogin() throws ClassNotFoundException {
     }
@@ -46,11 +28,7 @@ public class TestLogin extends CommonAPI { // je rajoute extends CommonAPI
     public void loginWithValidCredential() {    //j'élimine "throws InterruptedException"
         LoginPage loginPage = new LoginPage(driver); // faut le mettre dans la méthode sinon ça ne va pas marcher
         HomePage homePage = new HomePage(driver); // juste pour cette méthode
-        // je crée des objets ici
-        // check user land and the right page
-        // pour pouvoir utiliser de LoginPage dans TestLogin et je crée des objets
-//        LoginPage loginPage = new loginPage(); // il est générique je le met accessible pour toutes les méthodes
-//        String expected = "Swag Labs";
+   
         String expected = excelReader.getDataForGivenHeaderAndKey("key", "login page title");
 //        String actual = driver.getTitle();
         String actual = getPageTitle();
