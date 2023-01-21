@@ -15,14 +15,6 @@ public class TestMenu extends CommonAPI {
 
     Logger LOG = LogManager.getLogger(TestMenu.class.getName());
 
-    // je fais appel à config.properties
-
-//    String username = prop.getProperty("username");
-//    String password = prop.getProperty("password");
-
-
-    // tant que j'ai rajouté decod dans Utility, je dois décoder mes coordonées
-
     String username = Utility.decode(prop.getProperty("username"));
     String password = Utility.decode(prop.getProperty("password"));
 
@@ -45,15 +37,9 @@ public class TestMenu extends CommonAPI {
         Assert.assertTrue(homePage.validateLogoutOptionsIsDisplayed());
         Assert.assertTrue(homePage.validateResetAppStateOptionsIsDisplayed());
 
-        // si on veut failer le test
-//        Assert.assertTrue(false);
-
-
         // click on about
         homePage.clickAboutLink();
 
-        // click on sauce lab community
-//        System.out.println("current url: " + slHomePage.getSLHomePageUrl(driver));
         LOG.info("current url: " + slHomePage.getSLHomePageUrl(driver));
         Assert.assertEquals("https://saucelabs.com/", slHomePage.getSLHomePageUrl(driver));
         waitFor(3);
