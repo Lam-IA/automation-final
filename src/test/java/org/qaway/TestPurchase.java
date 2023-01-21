@@ -15,14 +15,6 @@ public class TestPurchase extends CommonAPI {
 
     Logger LOG = LogManager.getLogger(TestPurchase.class.getName());
 
-    // je fais appel à config.properties
-
-//    String username = prop.getProperty("username");
-//    String password = prop.getProperty("password");
-
-
-    // tant que j'ai rajouté decod dans Utility, je dois décoder mes coordonées
-
     String username = Utility.decode(prop.getProperty("username"));
     String password = Utility.decode(prop.getProperty("password"));
     @Test
